@@ -53,6 +53,10 @@ You can learn more on the [Okta + JavaScript][lang-landing] page in our document
   - [Bootstrapping from a recovery token](#bootstrapping-from-a-recovery-token)
   - [Feature flags](#feature-flags)
 - [Events](#events)
+  - [ready](#ready)
+  - [render](#render)
+  - [pageRendered](#pagerendered)
+  - [passwordRevealed](#passwordrevealed)
 - [Building the Widget](#building-the-widget)
   - [The `.widgetrc` config file](#the-widgetrc-config-file)
   - [Build and test commands](#build-and-test-commands)
@@ -120,7 +124,7 @@ node_modules/@okta/okta-signin-widget/dist/
 │   │   # file when creating a custom theme - the classes/elements are subject to
 │   │   # change between releases
 │   ├── okta-sign-in.min.css
-│   │ 
+│   │
 │   │   # Example theme that you can use as a template to create your own custom theme
 │   └── okta-theme.css
 │
@@ -140,7 +144,7 @@ node_modules/@okta/okta-signin-widget/dist/
 │   │   # down through `npm install` (which allows you to use your own version of
 │   │   # jquery, etc).
 │   ├── okta-sign-in.entry.js
-│   │ 
+│   │
 │   │   # Development version of okta-sign-in.min.js. Equipped with helpful
 │   │   # console warning messages for common configuration errors.
 │   └── okta-sign-in.js
@@ -354,30 +358,28 @@ Subscribe to an event published by the widget.
 
 - `event` - [Event](#events) to subscribe to
 - `callback` - Function to call when the event is triggered
-- `context` - Optional context to bind the callback to
 
 ```javascript
-signIn.on('pageRendered', function (data) {
-  console.log(data);
-});
+// Handle a 'render' event using an onRender callback
+signIn.on('render', onRender);
 ```
 
 ### off
 
 Unsubscribe from widget events. If no callback is provided, unsubscribes all listeners from the event.
 
-- `event` - Optional event to unsubscribe from
+- `event` - Optional [event](#events) to unsubscribe from
 - `callback` - Optional callback that was used to subscribe to the event
 
 ```javascript
 // Unsubscribe all listeners from all events
 signIn.off();
 
-// Unsubscribe all listeners that have been registered to the 'pageRendered' event
-signIn.off('pageRendered');
+// Unsubscribe all listeners that have been registered to the 'render' event
+signIn.off('render');
 
-// Unsubscribe the onPageRendered listener from the 'pageRendered' event
-signIn.off('pageRendered', onPageRendered);
+// Unsubscribe the onRender listener from the 'render' event
+signIn.off('render', onRender);
 ```
 
 ### getTransaction
@@ -1319,23 +1321,63 @@ features: {
 
 Events published by the widget. Subscribe to these events using [on](#onevent-callback-context).
 
-- **pageRendered** - triggered when the widget transitions to a new page, and animations have finished.
+### ready
 
-    ```javascript
-    // Overriding the "Back to Sign In" click action on the Forgot Password page
-    signIn.on('pageRendered', function (data) {
-      if (data.page !== 'forgot-password') {
-        return;
-      }
-      var backLink = document.getElementsByClassName('js-back')[0];
-      backLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        // Custom link behavior
-      });
-    });
-    ```
-- **passwordRevealed** - triggered when the show password button is clicked.
+Triggered when the widget is ready to accept user input for the first time. Returns a `context` object containing the following properties:
+
+- **controller** - Current controller name
+
+```javascript
+signIn.on('ready', function (context) {
+  if (context.controller === 'primary-auth') {
+    // The primary authentication form is ready for user input
+  }
+});
+```
+
+### render
+
+Triggered when the widget transitions to a new page and animations have finished. Returns a `context` object containing the following properties:
+
+- **controller** - Current controller name
+
+```javascript
+// Overriding the "Back to Sign In" click action on the Forgot Password page
+signIn.on('render', function (context) {
+  if (context.controller !== 'forgot-password') {
+    return;
+  }
+  var backLink = document.getElementsByClassName('js-back')[0];
+  backLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    // Custom link behavior
+  });
+});
+```
+
+### pageRendered
+
+:warning: This event has been *deprecated*, please use [**render**](#render) instead.
+
+Triggered when the widget transitions to a new page and animations have finished.
+
+```javascript
+signIn.on('pageRendered', function (data) {
+  console.log(data);
+  // { page: 'forgot-password' }
+});
+```
+
+### passwordRevealed
+
+Triggered when the show password button is clicked.
+
+```javascript
+signIn.on('passwordRevealed', function () {
+  // Handle the event
+})
+```
 
 ## Building the Widget
 
