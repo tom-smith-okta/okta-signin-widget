@@ -4,17 +4,13 @@ const packageJson = require('./package.json');
 const EMPTY = path.resolve(__dirname, 'src/empty');
 const SHARED_JS = path.resolve(__dirname, 'node_modules/@okta/courage/src');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { BannerPlugin } = require('webpack');
+const { BannerPlugin, IgnorePlugin } = require('webpack');
 const DIST_FILE_NAME = 'courage-for-signin-widget';
 
 const EXTERNAL_PATHS = [
-  'jquery',
   'qtip',
-  'backbone',
-  'underscore',
   'handlebars',
-  'moment',
-  'shared/util/Bundles'
+  'okta-i18n-bundles'
 ];
 
 const webpackConfig = {
@@ -32,20 +28,16 @@ const webpackConfig = {
   resolve: {
     alias: {
 
-      'okta/jquery': SHARED_JS + '/util/jquery-wrapper',
-      'okta/underscore': SHARED_JS + '/util/underscore-wrapper',
-      'okta/handlebars': SHARED_JS + '/util/handlebars-wrapper',
-      'okta/moment': SHARED_JS + '/util/moment-wrapper',
-
-      // jsons is from StringUtil
-      'vendor/lib/json2': EMPTY,
-
       // simplemodal is from dependency chain:
       //   BaseRouter -> ConfirmationDialog -> BaseFormDialog -> BaseModalDialog -> simplemodal
       'vendor/plugins/jquery.simplemodal': EMPTY,
 
-      'shared': SHARED_JS,
-      'vendor': SHARED_JS + '/vendor',
+      // Backbone depends on underscore >= 1.8.3 which resolves to 1.9.1
+      // Courage depends on underscore 1.8.3
+      // Therefore two underscore has been bundled unless set the followin alias
+      'underscore': `${SHARED_JS}/vendor/lib/underscore`,
+
+      'vendor': `${SHARED_JS}/vendor`,
     }
   },
 
@@ -53,7 +45,9 @@ const webpackConfig = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: function(filePath) {
+          return filePath.indexOf('courage/src') === -1 || filePath.indexOf('courage/src/vendor') > 0
+        },
         loader: 'babel-loader',
         query: {
           presets: ['env'],
@@ -63,6 +57,7 @@ const webpackConfig = {
   },
 
   plugins: [
+    new IgnorePlugin(/^\.\/locale$/, /moment$/),
     new BannerPlugin(`THIS FILE IS GENERATED FROM PACKAGE @okta/courage@${packageJson.dependencies['@okta/courage']}`),
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
