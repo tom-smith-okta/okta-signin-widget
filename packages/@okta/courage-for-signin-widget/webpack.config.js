@@ -40,8 +40,10 @@ const webpackConfig = {
     rules: [
       {
         test: /\.js$/,
+        // exclude: /node_modules/,
         exclude: function(filePath) {
-          return filePath.indexOf('courage/src') === -1 || filePath.indexOf('courage/src/vendor') > 0
+          return filePath.indexOf('node_modules') > 0 && filePath.indexOf('@okta/courage') === -1 ||
+            filePath.indexOf('@okta/courage/src/vendor') > 0;
         },
         loader: 'babel-loader',
         query: {
