@@ -27,7 +27,7 @@ module.exports = function (outputFilename) {
         // Vendor files from courage that are remapped in OSW to point to an npm
         // module in our package.json dependencies
         'handlebars': 'handlebars/dist/handlebars',
-        'qtip': '@okta/qtip2',
+        // 'qtip': '@okta/qtip2',
 
         // Duo has an npm module, but the latest version does not expose the
         // v2 version. Continue to use the vendor file that is checked into

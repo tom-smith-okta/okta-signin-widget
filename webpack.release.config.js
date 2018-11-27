@@ -66,4 +66,4 @@ devConfig.entry.unshift('babel-polyfill');
 devConfig.plugins = plugins({ isProduction: false, analyzerFile: 'okta-sign-in.analyzer' });
 
 // module.exports = [entryConfig, cdnConfig, noJqueryConfig, devConfig];
-module.exports = [cdnConfig];
+module.exports = [devConfig, cdnConfig];

@@ -11,8 +11,6 @@
  */
 
 define([
-  'jquery',
-  'underscore',
   'handlebars',
   'q',
   'nls/login.json',
@@ -20,8 +18,9 @@ define([
   'util/Logger',
   'config/config.json',
   'util/BrowserFeatures'
-], function ($, _, Handlebars, Q, login, country, Logger, config, BrowserFeatures) {
+], function (Handlebars, Q, login, country, Logger, config, BrowserFeatures) {
 
+  var { $, _ } = {};
   var STORAGE_KEY = 'osw.languages';
 
   var bundlePathTpl = Handlebars.compile('/labels/jsonp/{{bundle}}_{{languageCode}}.jsonp');

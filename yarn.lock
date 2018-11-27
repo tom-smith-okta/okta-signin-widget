@@ -4851,10 +4851,6 @@ joi@^9.2.0:
     moment "2.x.x"
     topo "2.x.x"
 
-jquery@1.12.1:
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-1.12.1.tgz#9cc34ce4780d4ceb90c44328f071064f01960c18"
-
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.9.tgz#748911fb04f48a60c4771b375cac45a80df11c03"
