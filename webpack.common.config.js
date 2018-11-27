@@ -22,7 +22,7 @@ module.exports = function (outputFilename) {
         // General remapping
         'nls': '@okta/i18n/dist/json',
         'okta': `${LOCAL_PACKAGES}/@okta/courage-for-signin-widget.js`,
-        'shared/util/Bundles': 'util/Bundles',
+        'okta-i18n-bundles': 'util/Bundles',
 
         // Vendor files from courage that are remapped in OSW to point to an npm
         // module in our package.json dependencies
@@ -41,7 +41,7 @@ module.exports = function (outputFilename) {
         // Babel
         {
           test: /\.js$/,
-          exclude: /node_modules/,
+          exclude: /node_modules|courage-for-signin-widget/,
           loader: 'babel-loader',
           query: {
             presets: ['env'],
