@@ -2,12 +2,13 @@
 const path = require('path');
 const packageJson = require('./package.json');
 const SHARED_JS = path.resolve(__dirname, 'node_modules/@okta/courage/src');
+const PACKAGES = path.resolve(__dirname, '../');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { BannerPlugin, IgnorePlugin } = require('webpack');
 const DIST_FILE_NAME = 'courage-for-signin-widget';
 
 const EXTERNAL_PATHS = [
-  'qtip',
+  // 'qtip',
   'handlebars',
   'okta-i18n-bundles'
 ];
@@ -32,6 +33,8 @@ const webpackConfig = {
       // Therefore two underscore has been bundled unless set the followin alias
       'underscore': `${SHARED_JS}/vendor/lib/underscore`,
 
+      'qtip': `${PACKAGES}/qtip2`,
+      'jquery': `${SHARED_JS}/vendor/lib/jquery-1.12.4`,
       'vendor': `${SHARED_JS}/vendor`,
     }
   },
@@ -58,7 +61,7 @@ const webpackConfig = {
     // simplemodal is from dependency chain and it's not used at all in sign-in widget
     //   BaseRouter -> ConfirmationDialog -> BaseFormDialog -> BaseModalDialog -> simplemodal
     new IgnorePlugin(/vendor\/plugins\/jquery\.simplemodal/, /courage/),
-    new BannerPlugin(`THIS FILE IS GENERATED FROM PACKAGE @okta/courage@${packageJson.dependencies['@okta/courage']}`),
+    new BannerPlugin(`THIS FILE IS GENERATED FROM PACKAGE @okta/courage@${packageJson.devDependencies['@okta/courage']}`),
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
       reportFilename: `${DIST_FILE_NAME}.html`,
