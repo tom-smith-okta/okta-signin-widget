@@ -8,7 +8,6 @@ const { BannerPlugin, IgnorePlugin } = require('webpack');
 const DIST_FILE_NAME = 'courage-for-signin-widget';
 
 const EXTERNAL_PATHS = [
-  // 'qtip',
   'handlebars',
   'okta-i18n-bundles'
 ];
