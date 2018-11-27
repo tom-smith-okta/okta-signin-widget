@@ -14146,7 +14146,7 @@ var _BaseView = __webpack_require__(1);
 
 var _BaseView2 = _interopRequireDefault(_BaseView);
 
-var _Callout = __webpack_require__(70);
+var _Callout = __webpack_require__(69);
 
 var _Callout2 = _interopRequireDefault(_Callout);
 
@@ -23274,7 +23274,7 @@ var _ConfirmationDialog = __webpack_require__(46);
 
 var _ConfirmationDialog2 = _interopRequireDefault(_ConfirmationDialog);
 
-var _Notification = __webpack_require__(57);
+var _Notification = __webpack_require__(56);
 
 var _Notification2 = _interopRequireDefault(_Notification);
 
@@ -23534,7 +23534,7 @@ var _BaseView = __webpack_require__(1);
 
 var _BaseView2 = _interopRequireDefault(_BaseView);
 
-var _ReadModeBar = __webpack_require__(50);
+var _ReadModeBar = __webpack_require__(49);
 
 var _ReadModeBar2 = _interopRequireDefault(_ReadModeBar);
 
@@ -23542,11 +23542,11 @@ var _Toolbar = __webpack_require__(28);
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
-var _ErrorBanner = __webpack_require__(51);
+var _ErrorBanner = __webpack_require__(50);
 
 var _ErrorBanner2 = _interopRequireDefault(_ErrorBanner);
 
-var _ErrorParser = __webpack_require__(52);
+var _ErrorParser = __webpack_require__(51);
 
 var _ErrorParser2 = _interopRequireDefault(_ErrorParser);
 
@@ -23554,19 +23554,19 @@ var _FormUtil = __webpack_require__(9);
 
 var _FormUtil2 = _interopRequireDefault(_FormUtil);
 
-var _InputContainer = __webpack_require__(53);
+var _InputContainer = __webpack_require__(52);
 
 var _InputContainer2 = _interopRequireDefault(_InputContainer);
 
-var _InputFactory = __webpack_require__(54);
+var _InputFactory = __webpack_require__(53);
 
 var _InputFactory2 = _interopRequireDefault(_InputFactory);
 
-var _InputLabel = __webpack_require__(55);
+var _InputLabel = __webpack_require__(54);
 
 var _InputLabel2 = _interopRequireDefault(_InputLabel);
 
-var _InputWrapper = __webpack_require__(56);
+var _InputWrapper = __webpack_require__(55);
 
 var _InputWrapper2 = _interopRequireDefault(_InputWrapper);
 
@@ -24690,7 +24690,7 @@ var _TemplateUtil = __webpack_require__(3);
 
 var _TemplateUtil2 = _interopRequireDefault(_TemplateUtil);
 
-__webpack_require__(69);
+__webpack_require__(68);
 
 var _BaseInput = __webpack_require__(10);
 
@@ -25008,7 +25008,7 @@ var _TemplateUtil = __webpack_require__(3);
 
 var _TemplateUtil2 = _interopRequireDefault(_TemplateUtil);
 
-__webpack_require__(73);
+__webpack_require__(72);
 
 var _BaseInput = __webpack_require__(10);
 
@@ -25231,25 +25231,25 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* eslint max-pa
   __webpack_require__(3),
   __webpack_require__(22),
   __webpack_require__(25),
-  __webpack_require__(58),
+  __webpack_require__(57),
   __webpack_require__(15),
-  __webpack_require__(60),
+  __webpack_require__(59),
   __webpack_require__(6),
   __webpack_require__(37),
   __webpack_require__(7),
-  __webpack_require__(62),
+  __webpack_require__(61),
   __webpack_require__(1),
-  __webpack_require__(64),
-  __webpack_require__(66),
+  __webpack_require__(63),
+  __webpack_require__(65),
   __webpack_require__(27),
   __webpack_require__(29),
   __webpack_require__(9),
-  __webpack_require__(67),
+  __webpack_require__(66),
   __webpack_require__(28),
   __webpack_require__(33),
+  __webpack_require__(73),
   __webpack_require__(74),
   __webpack_require__(75),
-  __webpack_require__(76),
   __webpack_require__(31),
 ], __WEBPACK_AMD_DEFINE_RESULT__ = (function (Backbone, $, _, Handlebars, 
     Model, BaseModel, BaseCollection, SchemaProperty, BaseSchema,
@@ -27042,7 +27042,7 @@ var _BaseView = __webpack_require__(1);
 
 var _BaseView2 = _interopRequireDefault(_BaseView);
 
-__webpack_require__(49);
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"vendor/plugins/jquery.simplemodal\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27140,17 +27140,6 @@ exports.default = _BaseView2.default.extend(
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_RESULT__;// TODO: maybe replaced by
-// https://github.com/Calvein/empty-module
-// https://github.com/crimx/empty-module-loader
-!(__WEBPACK_AMD_DEFINE_RESULT__ = (function () {}).call(exports, __webpack_require__, exports, module),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -27199,7 +27188,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27233,7 +27222,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27356,7 +27345,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27569,7 +27558,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27621,7 +27610,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27738,7 +27727,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27871,7 +27860,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27954,7 +27943,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27980,7 +27969,7 @@ var _SettingsModel = __webpack_require__(26);
 
 var _SettingsModel2 = _interopRequireDefault(_SettingsModel);
 
-var _StateMachine = __webpack_require__(59);
+var _StateMachine = __webpack_require__(58);
 
 var _StateMachine2 = _interopRequireDefault(_StateMachine);
 
@@ -28112,7 +28101,7 @@ exports.default = _BaseView2.default.extend(
 });
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28161,7 +28150,7 @@ exports.default = _Model2.default.extend({
 });
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28175,7 +28164,7 @@ var _underscoreWrapper = __webpack_require__(0);
 
 var _underscoreWrapper2 = _interopRequireDefault(_underscoreWrapper);
 
-var _js = __webpack_require__(61);
+var _js = __webpack_require__(60);
 
 var _js2 = _interopRequireDefault(_js);
 
@@ -28200,7 +28189,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -28355,7 +28344,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28365,7 +28354,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _momentWrapper = __webpack_require__(63);
+var _momentWrapper = __webpack_require__(62);
 
 var _momentWrapper2 = _interopRequireDefault(_momentWrapper);
 
@@ -28490,7 +28479,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28513,7 +28502,7 @@ if (typeof okta !== 'undefined' && (okta.locale || 'en')) {
 exports.default = _moment2.default;
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28523,7 +28512,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _ListView = __webpack_require__(65);
+var _ListView = __webpack_require__(64);
 
 var _ListView2 = _interopRequireDefault(_ListView);
 
@@ -28542,7 +28531,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _BaseView2.default.decorate(_ListView2.default);
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28644,7 +28633,7 @@ exports.default = _View2.default.extend( /** @lends src/framework/ListView.proto
 });
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28776,7 +28765,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28794,11 +28783,11 @@ var _StringUtil = __webpack_require__(4);
 
 var _StringUtil2 = _interopRequireDefault(_StringUtil);
 
-var _BooleanSelect = __webpack_require__(68);
+var _BooleanSelect = __webpack_require__(67);
 
 var _BooleanSelect2 = _interopRequireDefault(_BooleanSelect);
 
-var _TextBoxSet = __webpack_require__(71);
+var _TextBoxSet = __webpack_require__(70);
 
 var _TextBoxSet2 = _interopRequireDefault(_TextBoxSet);
 
@@ -29091,7 +29080,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29145,7 +29134,7 @@ exports.default = _Select2.default.extend({
 });
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Chosen, a Select Box Enhancer for jQuery and Prototype
@@ -30286,7 +30275,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Chosen, a Sel
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30490,7 +30479,7 @@ exports.default = /** @lends module:Okta.internal.views.components.Callout */{
 };
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30512,7 +30501,7 @@ var _BaseInput = __webpack_require__(10);
 
 var _BaseInput2 = _interopRequireDefault(_BaseInput);
 
-var _DeletableBox = __webpack_require__(72);
+var _DeletableBox = __webpack_require__(71);
 
 var _DeletableBox2 = _interopRequireDefault(_DeletableBox);
 
@@ -30633,7 +30622,7 @@ exports.default = _BaseInput2.default.extend({
 });
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30802,7 +30791,7 @@ exports.default = _BaseView2.default.extend({
 });
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! http://mths.be/placeholder v2.0.7 by @mathias */
@@ -30964,7 +30953,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! http://mths.
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31050,7 +31039,7 @@ exports.default = _TextBox2.default.extend({
 });
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31148,7 +31137,7 @@ exports.default = _BaseInput2.default.extend({
 });
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
