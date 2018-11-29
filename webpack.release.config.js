@@ -21,14 +21,8 @@ var plugins = require('./buildtools/webpack/plugins');
 var entryConfig = config('okta-sign-in.entry.js');
 entryConfig.output.filename = 'okta-sign-in.entry.js';
 entryConfig.externals = {
-  '@okta/okta-auth-js/jquery': true,
   'backbone': true,
-  'jquery': {
-    'commonjs': 'jquery',
-    'commonjs2': 'jquery',
-    'amd': 'jquery',
-    'root': 'jQuery'
-  },
+  'underscore': true,
   'handlebars': {
     'commonjs': 'handlebars/dist/handlebars',
     'commonjs2': 'handlebars/dist/handlebars',
@@ -36,8 +30,7 @@ entryConfig.externals = {
     'root': 'handlebars'
   },
   'q': true,
-  'u2f-api-polyfill': true,
-  'underscore': true
+  'u2f-api-polyfill': true
 };
 entryConfig.plugins = plugins({ isProduction: false, analyzerFile: 'okta-sign-in.entry.analyzer' });
 
