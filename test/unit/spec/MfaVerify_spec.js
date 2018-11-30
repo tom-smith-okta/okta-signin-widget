@@ -2754,6 +2754,23 @@ function (Okta,
               });
             });
         });
+        itp('shows error in case of an error response when verifying', function () {
+          return setupDuo()
+            .then(function (test) {
+              test.setNextResponse({
+                status: 401,
+                responseType: 'json',
+                response: {}
+              });
+              var postAction = Duo.init.calls.mostRecent().args[0].post_action;
+              postAction('someSignedResponse');
+              return Expect.waitForFormError(test.form, test);
+            })
+            .then(function (test) {
+              expect(test.form.hasErrors()).toBe(true);
+              expect(test.form.errorMessage()).toBe('We found some errors. Please review the form and make corrections.');
+            });
+        });
       });
 
       Expect.describe('Windows Hello', function () {
