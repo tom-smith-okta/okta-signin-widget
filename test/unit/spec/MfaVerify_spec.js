@@ -2674,19 +2674,9 @@ function (Okta,
             expect(test.form.isDuo()).toBe(true);
           });
         });
-        itp('shows the right beacon', function () {
-          return setupDuo().then(function (test) {
-            expectHasRightBeaconImage(test, 'mfa-duo');
-          });
-        });
         itp('shows the right title', function () {
           return setupDuo().then(function (test) {
             expectTitleToBe(test, 'Duo Security');
-          });
-        });
-        itp('iframe has title', function () {
-          return setupDuo().then(function (test) {
-            expect(test.form.$('iframe').attr('title')).toBe(test.form.titleText());
           });
         });
         itp('has remember device checkbox', function () {
@@ -2730,15 +2720,6 @@ function (Okta,
                 }
               });
             });
-        });
-        itp('initializes duo correctly', function () {
-          return setupDuo().then(function (test) {
-            var initOptions = Duo.init.calls.mostRecent().args[0];
-            expect(initOptions.host).toBe('api123443.duosecurity.com');
-            expect(initOptions.sig_request).toBe('sign_request(ikey, skey, akey, username)');
-            expect(initOptions.iframe).toBe(test.form.iframe().get(0));
-            expect(_.isFunction(initOptions.post_action)).toBe(true);
-          });
         });
         itp('notifies okta when duo is done, and completes verification', function () {
           return setupDuo()

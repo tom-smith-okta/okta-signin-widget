@@ -25,12 +25,14 @@ function (Okta, Duo, OktaAuth, Util, Beacon, Expect, Form, Router, $sandbox,
     function setup (startRouter) {
       var setNextResponse = Util.mockAjax();
       var baseUrl = 'https://foo.com';
+      var successSpy = jasmine.createSpy('success');
       var authClient = new OktaAuth({url: baseUrl});
       var router = new Router({
         el: $sandbox,
         baseUrl: baseUrl,
         authClient: authClient,
-        'features.router': startRouter
+        'features.router': startRouter,
+        globalSuccessFn: successSpy
       });
       Util.registerRouter(router);
       Util.mockRouterNavigate(router, startRouter);
@@ -49,7 +51,8 @@ function (Okta, Duo, OktaAuth, Util, Beacon, Expect, Form, Router, $sandbox,
             beacon: new Beacon($sandbox),
             form: new Form($sandbox),
             ac: authClient,
-            setNextResponse: setNextResponse
+            setNextResponse: setNextResponse,
+            successSpy: successSpy
           });
         });
     }
@@ -63,6 +66,15 @@ function (Okta, Duo, OktaAuth, Util, Beacon, Expect, Form, Router, $sandbox,
     itp('iframe has title', function () {
       return setup().then(function (test) {
         expect(test.form.iframe().attr('title')).toBe(test.form.titleText());
+      });
+    });
+    itp('initializes duo correctly', function () {
+      return setup().then(function (test) {
+        var initOptions = Duo.init.calls.mostRecent().args[0];
+        expect(initOptions.host).toBe('api123443.duosecurity.com');
+        expect(initOptions.sig_request).toBe('sign_request(ikey, skey, akey, username)');
+        expect(initOptions.iframe).toBe(test.form.iframe().get(0));
+        expect(_.isFunction(initOptions.post_action)).toBe(true);
       });
     });
     itp('visits previous link when back link is clicked', function () {
@@ -106,15 +118,6 @@ function (Okta, Duo, OktaAuth, Util, Beacon, Expect, Form, Router, $sandbox,
         });
       });
     });
-    itp('initializes duo correctly', function () {
-      return setup().then(function (test) {
-        var initOptions = Duo.init.calls.mostRecent().args[0];
-        expect(initOptions.host).toBe('api123443.duosecurity.com');
-        expect(initOptions.sig_request).toBe('sign_request(ikey, skey, akey, username)');
-        expect(initOptions.iframe).toBe(test.form.iframe().get(0));
-        expect(_.isFunction(initOptions.post_action)).toBe(true);
-      });
-    });
     itp('notifies okta when duo is done, and completes enrollment', function () {
       return setup()
         .then(function (test) {
@@ -128,7 +131,7 @@ function (Okta, Duo, OktaAuth, Util, Beacon, Expect, Form, Router, $sandbox,
           });
           var postAction = Duo.init.calls.mostRecent().args[0].post_action;
           postAction('someSignedResponse');
-          return tick();
+          return Expect.waitForSpyCall(test.successSpy, test);
         })
         .then(function () {
           expect($.ajax.calls.count()).toBe(2);
@@ -146,6 +149,23 @@ function (Okta, Duo, OktaAuth, Util, Beacon, Expect, Form, Router, $sandbox,
               stateToken: 'testStateToken'
             }
           });
+        });
+    });
+    itp('shows error in case of an error response', function () {
+      return setup()
+        .then(function (test) {
+          test.setNextResponse({
+            status: 401,
+            responseType: 'json',
+            response: {}
+          });
+          var postAction = Duo.init.calls.mostRecent().args[0].post_action;
+          postAction('someSignedResponse');
+          return Expect.waitForFormError(test.form, test);
+        })
+        .then(function (test) {
+          expect(test.form.hasErrors()).toBe(true);
+          expect(test.form.errorMessage()).toBe('We found some errors. Please review the form and make corrections.');
         });
     });
 
