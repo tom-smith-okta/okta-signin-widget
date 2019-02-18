@@ -138,6 +138,11 @@ function (Okta, BaseLoginModel, CookieUtil, Enums) {
           multiOptionalFactorEnroll: multiOptionalFactorEnroll
         }
       };
+
+      if (this.settings.options.hasOwnProperty('contextData')) {
+        signInArgs.contextData = this.settings.options.contextData;
+      }
+
       if (!this.settings.get('features.passwordlessAuth')) {
         signInArgs.password = this.get('password');
       }
